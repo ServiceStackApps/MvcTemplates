@@ -1,7 +1,5 @@
-﻿using System.IO;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
-using ServiceStack;
 using ServiceStack.Mvc;
 using ServiceStack.Templates;
 
@@ -9,8 +7,11 @@ namespace MvcTemplates.Controllers
 {
     public class HomeController : Controller
     {
-        public async Task<ActionResult> Index() =>
-            await new PageResult(HostContext.TryResolve<ITemplatePages>().GetPage("index")).ToMvcResultAsync();
+        private readonly ITemplatePages pages;
+        public HomeController(ITemplatePages pages) => this.pages = pages;
+
+        public Task<MvcPageResult> Index() =>
+            new PageResult(pages.GetPage("index")).ToMvcResultAsync();
 
         public ActionResult About()
         {
