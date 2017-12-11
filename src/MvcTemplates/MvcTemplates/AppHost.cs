@@ -49,7 +49,7 @@ namespace MvcTemplates
 
             var i = 1;
             DocLinks.ForEach((page, title) => customFilters.DocsIndex[i++] = new KeyValuePair<string, string>(
-                "http://templates.netcore.io/docs/" + page,
+                "http://templates.servicestack.net/docs/" + page,
                 title
             ));
 
