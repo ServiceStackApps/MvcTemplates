@@ -45,17 +45,17 @@ namespace MvcTemplates
                 HandlerFactoryPath = "api",
             });
 
-            var customFilters = new CustomTemplateFilters();
+            var customScripts = new CustomScriptMethods();
 
             var i = 1;
-            DocLinks.ForEach((page, title) => customFilters.DocsIndex[i++] = new KeyValuePair<string, string>(
-                "http://templates.servicestack.net/docs/" + page,
+            DocLinks.ForEach((page, title) => customScripts.DocsIndex[i++] = new KeyValuePair<string, string>(
+                "https://sharpscript.net/docs/" + page,
                 title
             ));
 
-            Plugins.Add(new TemplatePagesFeature
+            Plugins.Add(new SharpPagesFeature 
             {
-                TemplateFilters = { customFilters }
+                ScriptMethods = { customScripts }
             });
 
             ControllerBuilder.Current.SetControllerFactory(new FunqControllerFactory(container));

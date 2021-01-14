@@ -1,14 +1,14 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 using ServiceStack.Mvc;
-using ServiceStack.Templates;
+using ServiceStack.Script;
 
 namespace MvcTemplates.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ITemplatePages pages;
-        public HomeController(ITemplatePages pages) => this.pages = pages;
+        private readonly ISharpPages pages;
+        public HomeController(ISharpPages pages) => this.pages = pages;
 
         public Task<MvcPageResult> Index() =>
             new PageResult(pages.GetPage("index")).ToMvcResultAsync();
